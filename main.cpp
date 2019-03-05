@@ -4,7 +4,6 @@
 #include <map>
 #include "person.h"
 #include "FilePersonRepository.h"
-#include "Choice.h"
 #include "Presenter.h"
 #include "SeatRandomizer.h"
 #include "MenuCommand.h"
@@ -17,7 +16,7 @@ int main(void) {
     
     PersonRepository* repository = new FilePersonRepository("persons.txt");
     Presenter presenter;
-    SeatRandomizer* seatRandomizer = new SeatRandomizer(5, 5);
+    SeatRandomizer seatRandomizer(5, 5);
     int inputChoice = 0;
 
     std::map<int, MenuCommand*> choiceMap;
@@ -25,7 +24,7 @@ int main(void) {
         new ListConsultantsCommand(repository, &presenter),
         new AddConsultantCommand(repository),
         new RemoveConsultantCommand(repository, &presenter),
-        new RandomizeSeatsCommand(seatRandomizer, repository)
+        new RandomizeSeatsCommand(&seatRandomizer, repository)
         });
     
     for(int i = 0; i < choiceCommands.size(); i++) {
@@ -35,11 +34,11 @@ int main(void) {
     while(true) {
         presenter.printMenu(choiceCommands);
         std::cin >> inputChoice;
-        std::cin.get();
         auto choice = choiceMap[inputChoice];
         if(choice) {
             choice->execute();
         }
+        
     }
     return 0;
 }

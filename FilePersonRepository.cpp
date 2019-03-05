@@ -24,8 +24,7 @@ std::vector<Person> FilePersonRepository::getAllPersons() {
     std::vector<Person> result;
 
     std::string line;
-    while (std::getline(infile, line))
-    {
+    while (std::getline(infile, line)) {
         result.push_back(Person(line));
     }
     infile.close();
