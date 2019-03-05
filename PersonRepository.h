@@ -7,5 +7,6 @@ class PersonRepository {
     virtual std::vector<Person> getAllPersons() = 0; 
     virtual bool savePerson(Person* person) = 0;
     virtual bool removePerson(Person* person) = 0;
+    virtual bool saveAllConsultants(std::vector<Person> consultants) = 0;
 };
 #endif

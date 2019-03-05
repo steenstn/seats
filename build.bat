@@ -1,2 +1,2 @@
 @echo off
-g++ *.h *.cpp -o seats
+g++ *.cpp -o seats

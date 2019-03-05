@@ -11,6 +11,7 @@
 #include "AddConsultantCommand.h"
 #include "RemoveConsultantCommand.h"
 #include "RandomizeSeatsCommand.h"
+#include "EditConsultantCommand.h"
 
 int main(void) {
     
@@ -24,7 +25,8 @@ int main(void) {
         new ListConsultantsCommand(repository, &presenter),
         new AddConsultantCommand(repository),
         new RemoveConsultantCommand(repository, &presenter),
-        new RandomizeSeatsCommand(repository, &seatRandomizer)
+        new RandomizeSeatsCommand(repository, &seatRandomizer),
+        new EditConsultantCommand(repository, &presenter)
         });
     
     for(int i = 0; i < choiceCommands.size(); i++) {
@@ -34,6 +36,9 @@ int main(void) {
     while(true) {
         presenter.printMenu(choiceCommands);
         std::cin >> inputChoice;
+        if(inputChoice == 0) {
+            return 0;
+        }
         auto choice = choiceMap[inputChoice];
         std::cin.ignore();
         if(choice) {

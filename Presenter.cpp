@@ -15,9 +15,10 @@ void Presenter::printMenu(std::vector<MenuCommand*> choices) {
 void Presenter::printConsultantList(std::vector<Person> consultants) {
     HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
     for(int i = 0; i < consultants.size(); i++) {
-        int characterColor = consultants[i].isActive() ? FOREGROUND_GREEN | FOREGROUND_INTENSITY : FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED;
+        Person consultant = consultants[i];
+        int characterColor = consultant.isActive() ? FOREGROUND_GREEN | FOREGROUND_INTENSITY : FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED;
         SetConsoleTextAttribute(out, characterColor);
-        cout << i << ": " << consultants[i].getName() << endl;
+        cout << i << ": " << consultant.getName() << "\t" << consultant.getNote() << endl;
     }
     SetConsoleTextAttribute(out, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
     cout << endl;

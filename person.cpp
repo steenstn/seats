@@ -1,13 +1,22 @@
 #include "person.h"
 class Person;
+
+Person::Person(std::string name, int status, std::string note) {
+    this->name = name;
+    this->bitStatus = status;
+    this->note = note;
+}
+
 Person::Person(std::string name, int status) {
     this->name = name;
     this->bitStatus = status;
+    this->note = "";
 }
 
 Person::Person(std::string name) {
     this->name = name;
     this->bitStatus = ACTIVE;
+    this->note = "";
 }
 
 std::string Person::getName() {
@@ -20,4 +29,8 @@ bool Person::isActive() {
 
 int Person::getBitStatus() {
     return this->bitStatus;
+}
+
+std::string Person::getNote() {
+    return this->note;
 }

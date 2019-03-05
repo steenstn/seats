@@ -11,6 +11,7 @@ bool FilePersonRepository::saveAllConsultants(std::vector<Person> consultants) {
     for(int i = 0; i < consultants.size();i++) {
         personsFile << consultants[i].getName() << "\n";
         personsFile << consultants[i].getBitStatus() << "\n";
+        personsFile << consultants[i].getNote() << "\n";
         
     }
     personsFile.close();
@@ -32,10 +33,15 @@ std::vector<Person> FilePersonRepository::getAllPersons() {
     while (infile.peek()!=EOF) {
         std::string name;
         std::getline(infile, name);
+        
         std::string statusString;
         std::getline(infile, statusString);
         int status = std::stoi(statusString);
-        result.push_back(Person(name, status));
+        
+        std::string note;
+        std::getline(infile, note);
+        
+        result.push_back(Person(name, status, note));
     }
     infile.get();
     infile.close();
