@@ -38,8 +38,6 @@ int main(void) {
         choiceMap[choiceCommands[i]->getKey()] = choiceCommands[i];
     }
 
-
-    
     while(true) {
         presenter.printMenu(choiceCommands);
         std::cin >> inputChoice;
@@ -48,27 +46,6 @@ int main(void) {
         if(choice) {
             choice->execute();
         }
-
-        
-/*
-        if(inputChoice == EXIT) {
-            return 0;
-        } else if(inputChoice == LIST_CONSULTANTS) {
-           //listConsultants(repository, &presenter);
-        } else if(inputChoice == ADD_CONSULTANT) {
-            addConsultant(repository);
-        } else if(inputChoice == REMOVE_CONSULTANT) {
-            removeConsultant(repository, &presenter);
-        } else if(inputChoice == RANDOMIZE_SEATS) {
-            auto result = seatRandomizer.getRandomizedSeats(repository->getAllPersons());
-            for(int i = 0; i < result.size(); i++) {
-                std::cout << i << std::endl;
-                for(int j = 0; j < result[i].size();j++) {
-                    std::cout << result[i][j].getName() << std::endl;
-                }
-                std::cout << std::endl;
-            }
-        }*/
     }
     return 0;
 }
