@@ -13,10 +13,6 @@
 #include "RemoveConsultantCommand.h"
 #include "RandomizeSeatsCommand.h"
 
-
-void listConsultants(FilePersonRepository* repository, Presenter* presenter);
-void addConsultant(FilePersonRepository* repository);
-void removeConsultant(FilePersonRepository* repository, Presenter* presenter);
 int main(void) {
     
     PersonRepository* repository = new FilePersonRepository("persons.txt");
@@ -24,8 +20,6 @@ int main(void) {
     SeatRandomizer* seatRandomizer = new SeatRandomizer(5, 5);
     int inputChoice = 0;
 
-    std::vector<Choice> choices({Choice(0, "Exit"), Choice(1, "List consultants"), Choice(2, "Add consultant"), Choice(3, "Remove consultant"), Choice(4, "Randomize seats")});
-    enum {EXIT = 0, LIST_CONSULTANTS = 1, ADD_CONSULTANT = 2, REMOVE_CONSULTANT = 3, RANDOMIZE_SEATS = 4};
     std::map<int, MenuCommand*> choiceMap;
     std::vector<MenuCommand*> choiceCommands({
         new ListConsultantsCommand(repository, &presenter),
