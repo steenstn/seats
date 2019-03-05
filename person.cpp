@@ -7,17 +7,8 @@ Person::Person(std::string name, int status, std::string note) {
     this->note = note;
 }
 
-Person::Person(std::string name, int status) {
-    this->name = name;
-    this->bitStatus = status;
-    this->note = "";
-}
-
-Person::Person(std::string name) {
-    this->name = name;
-    this->bitStatus = ACTIVE;
-    this->note = "";
-}
+Person::Person(std::string name, int status) : Person(name, status, "") {}
+Person::Person(std::string name) : Person(name, ACTIVE, "") {}
 
 std::string Person::getName() {
     return this->name;
