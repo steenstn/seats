@@ -2,7 +2,7 @@
 
 class RandomizeSeatsCommand;
 
-RandomizeSeatsCommand::RandomizeSeatsCommand(SeatRandomizer* seatRandomizer, PersonRepository* repository) : MenuCommand(4, "Randomize seats") {
+RandomizeSeatsCommand::RandomizeSeatsCommand(PersonRepository* repository, SeatRandomizer* seatRandomizer) : MenuCommand(4, "Randomize seats") {
     this->seatRandomizer = seatRandomizer;
     this->repository = repository;
     

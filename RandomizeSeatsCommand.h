@@ -11,7 +11,7 @@ class RandomizeSeatsCommand : public MenuCommand {
     PersonRepository* repository;
 
     public:
-    RandomizeSeatsCommand(SeatRandomizer* SeatRandomizer, PersonRepository* repository);
+    RandomizeSeatsCommand(PersonRepository* repository,SeatRandomizer* SeatRandomizer);
     void execute();
 };
 #endif

@@ -24,7 +24,7 @@ int main(void) {
         new ListConsultantsCommand(repository, &presenter),
         new AddConsultantCommand(repository),
         new RemoveConsultantCommand(repository, &presenter),
-        new RandomizeSeatsCommand(&seatRandomizer, repository)
+        new RandomizeSeatsCommand(repository, &seatRandomizer)
         });
     
     for(int i = 0; i < choiceCommands.size(); i++) {
