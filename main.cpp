@@ -35,6 +35,7 @@ int main(void) {
         presenter.printMenu(choiceCommands);
         std::cin >> inputChoice;
         auto choice = choiceMap[inputChoice];
+        std::cin.ignore();
         if(choice) {
             choice->execute();
         }

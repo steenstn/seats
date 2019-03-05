@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <iostream>
 class FilePersonRepository;
 
 bool FilePersonRepository::saveAllConsultants(std::vector<Person> consultants) {
@@ -9,6 +10,8 @@ bool FilePersonRepository::saveAllConsultants(std::vector<Person> consultants) {
     personsFile.open (this->fileName);
     for(int i = 0; i < consultants.size();i++) {
         personsFile << consultants[i].getName() << "\n";
+        personsFile << consultants[i].getBitStatus() << "\n";
+        
     }
     personsFile.close();
     return true;
@@ -23,10 +26,18 @@ std::vector<Person> FilePersonRepository::getAllPersons() {
 
     std::vector<Person> result;
 
-    std::string line;
-    while (std::getline(infile, line)) {
-        result.push_back(Person(line));
+    
+    int index = 0;
+    int numFields = 2;
+    while (infile.peek()!=EOF) {
+        std::string name;
+        std::getline(infile, name);
+        std::string statusString;
+        std::getline(infile, statusString);
+        int status = std::stoi(statusString);
+        result.push_back(Person(name, status));
     }
+    infile.get();
     infile.close();
     return result;
 }
