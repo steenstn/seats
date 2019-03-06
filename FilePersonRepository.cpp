@@ -27,9 +27,6 @@ std::vector<Person> FilePersonRepository::getAllPersons() {
 
     std::vector<Person> result;
 
-    
-    int index = 0;
-    int numFields = 2;
     while (infile.peek()!=EOF) {
         std::string name;
         std::getline(infile, name);

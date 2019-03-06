@@ -17,6 +17,9 @@ void EditConsultantCommand::execute() {
     int consultantIndex;
     std::cin >> consultantIndex;
     std::cin.ignore();
+    if(consultantIndex < 0 || consultantIndex >=allConsultants.size()) {
+        return;
+    }
     Person* p = &allConsultants[consultantIndex];
     system("cls");
     std::cout << p->getName() << std::endl << "Choose action" << std::endl;
