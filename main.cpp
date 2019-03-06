@@ -1,11 +1,7 @@
 #include <iostream>
-#include <stdlib.h>
 #include <vector>
 #include <map>
-#include "person.h"
 #include "FilePersonRepository.h"
-#include "Presenter.h"
-#include "SeatRandomizer.h"
 #include "MenuCommand.h"
 #include "ListConsultantsCommand.h"
 #include "AddConsultantCommand.h"
